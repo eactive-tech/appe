@@ -9,6 +9,11 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     # "frappe~=15.0.0" # Installed and managed by bench.
+    "face-recognition",
+    "numpy",
+    "pillow",
+    "dlib",
+    "opencv-contrib-python"
 ]
 
 [build-system]

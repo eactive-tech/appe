@@ -8,6 +8,7 @@
  "field_order": [
   "naming_series",
   "employee_name",
+  "user_id",
   "section_break_2mp1",
   "lft",
   "rgt",
@@ -65,15 +66,21 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "EMP-#####"
+  },
+  {
+   "fieldname": "user_id",
+   "fieldtype": "Link",
+   "label": "User Id",
+   "options": "User"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-08-08 16:28:57.364757",
+ "modified": "2025-08-08 17:48:04.583457",
  "modified_by": "Administrator",
- "module": "appe",
+ "module": "Appe",
  "name": "Appe Employee",
  "naming_rule": "By \"Naming Series\" field",
  "nsm_parent_field": "parent_appe_employee",

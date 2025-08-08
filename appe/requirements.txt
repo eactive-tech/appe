@@ -1,5 +1,0 @@
-face_recognition
-numpy
-pillow
-dlib
-opencv-contrib-python

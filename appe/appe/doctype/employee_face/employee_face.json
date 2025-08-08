@@ -11,7 +11,6 @@
   "face_encoding",
   "azure_face_id",
   "person_group_id",
-  "amended_from",
   "person_id",
   "amended_from"
  ],
@@ -20,7 +19,7 @@
    "fieldname": "employee_id",
    "fieldtype": "Link",
    "label": "Employee ID",
-   "options": "Employee"
+   "options": "Appe Employee"
   },
   {
    "fieldname": "face_image",
@@ -81,7 +80,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2025-07-20 23:14:24.416824",
+ "modified": "2025-08-08 17:46:05.921074",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Employee Face",

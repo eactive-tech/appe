@@ -35,7 +35,7 @@
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
+   "options": "Appe Employee"
   },
   {
    "fieldname": "battery_level",
@@ -96,8 +96,8 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-16 22:37:56.080081",
- "modified_by": "kamesh3928@gmail.com",
+ "modified": "2025-08-08 17:46:41.822544",
+ "modified_by": "Administrator",
  "module": "Appe",
  "name": "Employee Location",
  "owner": "Administrator",
