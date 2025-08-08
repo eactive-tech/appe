@@ -1,0 +1,159 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2025-07-03 19:31:32.923497",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "report",
+  "appe_report",
+  "prepared_report",
+  "queued_by",
+  "job_id",
+  "print_format",
+  "column_break_fniw",
+  "status",
+  "queued_at",
+  "finished_at",
+  "orientation",
+  "section_break_jhoy",
+  "filters",
+  "error_message",
+  "results"
+ ],
+ "fields": [
+  {
+   "fetch_from": "appe_report.report",
+   "fieldname": "report",
+   "fieldtype": "Link",
+   "label": "Report",
+   "options": "Report",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "appe_report",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Appe Report",
+   "options": "Appe Report"
+  },
+  {
+   "fieldname": "filters",
+   "fieldtype": "JSON",
+   "in_list_view": 1,
+   "label": "Filters"
+  },
+  {
+   "default": "Queued",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nError\nQueued\nCompleted\nStarted"
+  },
+  {
+   "fieldname": "prepared_report",
+   "fieldtype": "Data",
+   "label": "Prepared Report"
+  },
+  {
+   "fieldname": "column_break_fniw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jhoy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Long Text",
+   "label": "Error Message"
+  },
+  {
+   "fieldname": "queued_by",
+   "fieldtype": "Link",
+   "label": "Queued By",
+   "options": "User"
+  },
+  {
+   "fieldname": "job_id",
+   "fieldtype": "Data",
+   "label": "Job ID"
+  },
+  {
+   "fieldname": "queued_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Queued At"
+  },
+  {
+   "fieldname": "finished_at",
+   "fieldtype": "Datetime",
+   "label": "Finished At"
+  },
+  {
+   "fetch_from": "appe_report.print_format",
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "link_filters": "[[\"Report\",\"doc_type\",\"=\",\"Appe Prepared Report\"]]",
+   "options": "Print Format",
+   "read_only": 1
+  },
+  {
+   "fieldname": "results",
+   "fieldtype": "Text",
+   "label": "Results"
+  },
+  {
+   "fetch_from": "appe_report.orientation",
+   "fieldname": "orientation",
+   "fieldtype": "Data",
+   "label": "Orientation",
+   "options": "\nPortrait\nLandscape",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "links": [],
+ "modified": "2025-07-30 23:33:35.077052",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Appe Prepared Report",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Queued"
+  },
+  {
+   "color": "Red",
+   "title": "Error"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-05 23:34:47.760484",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_checkin",
+  "enable_checkin_with_faceid",
+  "enable_live_location_tracking",
+  "one_signal_id"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_checkin",
+   "fieldtype": "Check",
+   "label": "Enable Check-In"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_checkin_with_faceid",
+   "fieldtype": "Check",
+   "label": "Enable Check-In With Face-Id"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_live_location_tracking",
+   "fieldtype": "Check",
+   "label": " Enable Live Location Tracking"
+  },
+  {
+   "fieldname": "one_signal_id",
+   "fieldtype": "Small Text",
+   "label": "One Signal Id"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-08-05 23:34:47.760484",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Appe Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

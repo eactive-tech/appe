@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-20 13:22:54.844774",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sender",
+  "receiver",
+  "group",
+  "group_receivers",
+  "message",
+  "message_type",
+  "send_time",
+  "received_time",
+  "seen_time",
+  "delete_time",
+  "reply_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sender",
+   "fieldtype": "Link",
+   "label": "Sender",
+   "options": "User"
+  },
+  {
+   "fieldname": "receiver",
+   "fieldtype": "Link",
+   "label": "Receiver",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "group",
+   "fieldtype": "Check",
+   "label": "Group"
+  },
+  {
+   "depends_on": "group",
+   "fieldname": "group_receivers",
+   "fieldtype": "Long Text",
+   "label": "Group Receivers"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Long Text",
+   "label": "Message"
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "label": "Message Type",
+   "options": "\nImage\nVideo\nDoc\nAttach"
+  },
+  {
+   "fieldname": "send_time",
+   "fieldtype": "Datetime",
+   "label": "Send Time"
+  },
+  {
+   "fieldname": "received_time",
+   "fieldtype": "Datetime",
+   "label": "Received Time"
+  },
+  {
+   "fieldname": "seen_time",
+   "fieldtype": "Datetime",
+   "label": "Seen Time"
+  },
+  {
+   "fieldname": "delete_time",
+   "fieldtype": "Datetime",
+   "label": "Delete Time"
+  },
+  {
+   "fieldname": "reply_from",
+   "fieldtype": "Link",
+   "label": "Reply From",
+   "options": "Appe Chat"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-20 13:50:57.408823",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Appe Chat",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

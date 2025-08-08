@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-16 12:29:37.779897",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "latitude",
+  "longitude",
+  "employee",
+  "battery_level",
+  "gps",
+  "wifi_status",
+  "airplane_mode",
+  "mobile_ip_address",
+  "sdk_version",
+  "brand",
+  "model",
+  "mobile_data_status",
+  "user",
+  "timestamp"
+ ],
+ "fields": [
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "battery_level",
+   "fieldtype": "Data",
+   "label": "Battery Level"
+  },
+  {
+   "fieldname": "gps",
+   "fieldtype": "Data",
+   "label": "GPS"
+  },
+  {
+   "fieldname": "wifi_status",
+   "fieldtype": "Data",
+   "label": "Wifi Status"
+  },
+  {
+   "fieldname": "airplane_mode",
+   "fieldtype": "Data",
+   "label": "Airplane Mode"
+  },
+  {
+   "fieldname": "mobile_ip_address",
+   "fieldtype": "Data",
+   "label": "Mobile IP Address"
+  },
+  {
+   "fieldname": "sdk_version",
+   "fieldtype": "Data",
+   "label": "SDK Version"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Data",
+   "label": "Brand"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "mobile_data_status",
+   "fieldtype": "Data",
+   "label": "Mobile data status"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Data",
+   "label": "Timestamp"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-16 22:37:56.080081",
+ "modified_by": "kamesh3928@gmail.com",
+ "module": "Appe",
+ "name": "Employee Location",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

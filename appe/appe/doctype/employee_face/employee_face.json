@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-20 23:14:24.416824",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_id",
+  "face_image",
+  "encoding",
+  "face_encoding",
+  "azure_face_id",
+  "person_group_id",
+  "amended_from",
+  "person_id",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_id",
+   "fieldtype": "Link",
+   "label": "Employee ID",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "face_image",
+   "fieldtype": "Attach Image",
+   "label": "face_image"
+  },
+  {
+   "fieldname": "encoding",
+   "fieldtype": "Data",
+   "label": "encoding"
+  },
+  {
+   "fieldname": "face_encoding",
+   "fieldtype": "Long Text",
+   "label": "face_encoding"
+  },
+  {
+   "fieldname": "azure_face_id",
+   "fieldtype": "Long Text",
+   "label": "azure_face_id ",
+   "max_height": "150px"
+  },
+  {
+   "fieldname": "person_group_id",
+   "fieldtype": "Long Text",
+   "label": "person_group_id ",
+   "max_height": "150px"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Face",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "person_id",
+   "fieldtype": "Long Text",
+   "label": "Person Id",
+   "max_height": "100px"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Face",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "image_field": "face_image",
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "max_attachments": 5,
+ "modified": "2025-07-20 23:14:24.416824",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Employee Face",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-21 23:02:28.926193",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "label",
+  "type",
+  "linked_doctype",
+  "refrence_docname",
+  "report_name",
+  "image",
+  "active",
+  "json"
+ ],
+ "fields": [
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Label",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:['Doctype','Form','Single Doctype'].includes(doc.type)",
+   "fieldname": "linked_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Linked Doctype",
+   "mandatory_depends_on": "eval:['Doctype','Form','Single Doctype'].includes(doc.type)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "json",
+   "fieldtype": "JSON",
+   "label": "JSON"
+  },
+  {
+   "fieldname": "refrence_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Refrence Docname",
+   "options": "linked_doctype"
+  },
+  {
+   "depends_on": "eval:doc.type=='Report'",
+   "fieldname": "report_name",
+   "fieldtype": "Link",
+   "label": "report_name",
+   "options": "Appe Report"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-08-03 16:31:34.002846",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Mobile App Dashboard Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

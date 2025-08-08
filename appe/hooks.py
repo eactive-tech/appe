@@ -9,6 +9,10 @@ app_license = "mit"
 # ------------------
 
 # required_apps = []
+# after_install = "appe.setup.after_install"
+# after_migrate = "appe.setup.after_install"
+# before_uninstall = "appe.setup.remove_custom_fields_from_appe"
+
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
