@@ -14,7 +14,11 @@
   "rgt",
   "is_group",
   "old_parent",
-  "parent_appe_employee"
+  "parent_appe_employee",
+  "appe_setting_tab",
+  "checkin_mandatory",
+  "enable_faceid",
+  "enable_live_location_tracking"
  ],
  "fields": [
   {
@@ -72,13 +76,36 @@
    "fieldtype": "Link",
    "label": "User Id",
    "options": "User"
+  },
+  {
+   "fieldname": "appe_setting_tab",
+   "fieldtype": "Tab Break",
+   "label": "Appe Setting"
+  },
+  {
+   "default": "0",
+   "fieldname": "checkin_mandatory",
+   "fieldtype": "Check",
+   "label": "Check-in Mandatory"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_faceid",
+   "fieldtype": "Check",
+   "label": "Enable FaceID"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_live_location_tracking",
+   "fieldtype": "Check",
+   "label": "Enable Live Location Tracking"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-08-08 17:48:04.583457",
+ "modified": "2025-08-08 22:21:58.475991",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Employee",

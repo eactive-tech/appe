@@ -6,34 +6,23 @@
  "engine": "InnoDB",
  "field_order": [
   "employee",
-  "user",
   "event_date",
-  "device_ip",
+  "device_id",
   "log_type",
-  "latlong"
+  "latitude",
+  "longitude"
  ],
  "fields": [
   {
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "label": "User",
-   "options": "User"
+   "options": "Appe Employee"
   },
   {
    "fieldname": "event_date",
-   "fieldtype": "Date",
-   "label": "Event Date"
-  },
-  {
-   "fieldname": "device_ip",
-   "fieldtype": "Data",
-   "label": "Device Ip"
+   "fieldtype": "Datetime",
+   "label": "Time"
   },
   {
    "fieldname": "log_type",
@@ -42,15 +31,25 @@
    "options": "\nIN\nOUT"
   },
   {
-   "fieldname": "latlong",
+   "fieldname": "latitude",
    "fieldtype": "Data",
-   "label": "Latlong"
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "device_id",
+   "fieldtype": "Data",
+   "label": "Device Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-16 22:37:56.293014",
- "modified_by": "kamesh3928@gmail.com",
+ "modified": "2025-08-08 22:05:38.314237",
+ "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appy Check-in",
  "owner": "Administrator",
