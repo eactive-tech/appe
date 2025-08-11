@@ -8,6 +8,8 @@ from frappe.utils import get_files_path, get_site_name, now
 import requests
 from frappe.utils.password import check_password, get_password_reset_limit
 import gzip
+from frappe.utils import get_url
+
 
 @frappe.whitelist()
 def create_appe_report_print():
@@ -188,7 +190,7 @@ def login_user(usr, pwd):
         api_key, api_secret = generate_keys(user_email)
         # frappe.local.login_manager.user = user_email
         # frappe.local.login_manager.post_login()
-        employee_data = frappe.db.get_all('Employee', filters={'user_id': user_email}, fields=['*'])
+        employee_data = frappe.db.get_all('Appe Employee', filters={'user_id': user_email}, fields=['*'])
         if employee_data :
             settings = frappe.get_doc('Appe Settings')
 
@@ -316,8 +318,8 @@ def storelocation():
 
         user = frappe.session.user
 
-        if frappe.db.exists("Employee", {"user_id": user}):
-            employee = frappe.get_doc("Employee", {"user_id": user})
+        if frappe.db.exists("Appe Employee", {"user_id": user}):
+            employee = frappe.get_doc("Appe Employee", {"user_id": user})
             two_days_ago = frappe.utils.add_days(frappe.utils.now_datetime(), -2)
 
             recent_timestamps = frappe.db.get_all(
@@ -379,7 +381,7 @@ def gettasks_and_request_and_attendancedata():
     try:
         user = frappe.session.user
         emp = frappe.get_list(
-            "Employee",
+            "Appe Employee",
             filters={"user_id": user},
             fields=["*"]
         )
@@ -560,7 +562,7 @@ def remove_assignment():
 def employee_details():
     try:
         # frappe.log_error('employee_checkin_status',frappe.form_dict)
-        employee = frappe.get_doc("Employee",{"user_id":frappe.session.user})
+        employee = frappe.get_doc("Appe Employee",{"user_id":frappe.session.user})
         if employee:
             frappe.response.message={
                 'status':True,
@@ -588,7 +590,7 @@ def employee_details():
 def employee_checkin_status():  
     try:
         frappe.log_error('employee_checkin_status',frappe.form_dict)
-        employee = frappe.get_doc("Employee",{"user_id":frappe.session.user})
+        employee = frappe.get_doc("Appe Employee",{"user_id":frappe.session.user})
         data = frappe.get_list("Appy Check-in", filters=[["Appy Check-in","event_date","Timespan","today"],["employee","=",employee.get("name")]], fields=["*"])
         if data:
             frappe.response.message={
@@ -616,7 +618,7 @@ def employee_checkin_status():
 def employee_checkin():
     try:
         # frappe.log_error('employee_checkin',frappe.form_dict)
-        employee = frappe.get_doc("Employee",{"user_id":frappe.session.user})
+        employee = frappe.get_doc("Appe Employee",{"user_id":frappe.session.user})
         newdoc= frappe.get_doc({'doctype':'Appy Check-in',
             'employee':employee.get('name'),
             'user':frappe.session.user,
@@ -640,4 +642,63 @@ def employee_checkin():
         }
         return
 
+
+@frappe.whitelist()
+def create_appe_post(title: str, content: str):
+    doc = frappe.get_doc({"doctype": "Appe Post", "title": title, "content": content})
+    doc.insert(ignore_permissions=True)
+    frappe.db.commit()
+    return {"status": True, "name": doc.name}
+
+
+@frappe.whitelist()
+def get_appe_posts(limit_start: int = 0, limit_page_length: int = 10):
+    try:
+        posts = frappe.get_all(
+        "Appe Post",
+        fields=["name", "title", "content", "owner", "modified_by", "creation","_liked_by"],
+        order_by="creation desc",
+        limit_start=int(limit_start),
+        limit_page_length=int(limit_page_length),
+        )
+
+        if not posts:
+            return {"status": True, "data": []}
+        post_names = [p["name"] for p in posts]
+
+        files = frappe.get_all(
+            "File",
+            filters={
+                "attached_to_doctype": "Appe Post",
+                "attached_to_name": ["in", post_names],
+            },
+            fields=["file_name", "file_url", "attached_to_name"],
+            limit_page_length=10000,
+        )
+
+        base = get_url()
+        files_by_post = {}
+        for f in files:
+            post = f["attached_to_name"]
+            files_by_post.setdefault(post, [])
+            url = f.get("file_url") or ""
+            if url and not url.lower().startswith("http"):
+                if not url.startswith("/"):
+                    url = f"/{url}"
+                url = f"{base}{url}"
+            files_by_post[post].append({
+                "file_name": f["file_name"],
+                "file_url": url
+            })
+
+        for p in posts:
+            attachments = files_by_post.get(p["name"], [])
+            image_exts = (".jpg", ".jpeg", ".png", ".gif", ".webp")
+            p["images"] = [a["file_url"] for a in attachments
+                        if a["file_name"].lower().endswith(image_exts)]
+            p["files"] = attachments
+
+        return {"status": True, "data": posts}
+    except Exception as e:
+        return {"status": False, "message": str(e)}
 

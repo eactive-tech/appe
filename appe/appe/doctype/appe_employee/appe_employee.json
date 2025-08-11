@@ -69,7 +69,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "EMP-#####"
+   "options": "EMP-.#####"
   },
   {
    "fieldname": "user_id",
@@ -105,9 +105,9 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-08-08 22:21:58.475991",
+ "modified": "2025-08-10 09:55:37.023136",
  "modified_by": "Administrator",
- "module": "Appe",
+ "module": "appe",
  "name": "Appe Employee",
  "naming_rule": "By \"Naming Series\" field",
  "nsm_parent_field": "parent_appe_employee",
