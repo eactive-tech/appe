@@ -1,0 +1,54 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"1Lt-8WmDmC\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Appe</span>\",\"col\":12}},{\"id\":\"_iqTcM5pw1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mobile App Dashboard\",\"col\":3}},{\"id\":\"uDji_OBaMp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Appe Report\",\"col\":3}},{\"id\":\"lOp5FZP3rF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mobile App Module\",\"col\":3}}]",
+ "creation": "2025-08-11 13:38:31.385313",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "heart",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Appe",
+ "links": [],
+ "modified": "2025-08-11 13:40:17.280975",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Appe",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Mobile App Dashboard",
+   "link_to": "Mobile App Dashboard",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Appe Report",
+   "link_to": "Appe Report",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Mobile App Module",
+   "link_to": "Mobile App Module",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Appe"
+}
