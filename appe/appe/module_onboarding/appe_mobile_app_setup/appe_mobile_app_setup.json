@@ -1,0 +1,29 @@
+{
+ "allow_roles": [
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "creation": "2025-08-13 05:49:11.875312",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "https://kameshkumar.com",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2025-08-13 05:49:11.875312",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Appe Mobile App Setup",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Add Employee"
+  }
+ ],
+ "subtitle": "Tutorial for mobile app setup",
+ "success_message": "Employee Created",
+ "title": "Appe Mobile App Setup"
+}

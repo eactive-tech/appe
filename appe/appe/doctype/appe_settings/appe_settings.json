@@ -9,6 +9,11 @@
   "enable_checkin",
   "enable_checkin_with_faceid",
   "enable_live_location_tracking",
+  "mobile_app_dashboard_tab",
+  "enable_approval_requests",
+  "enable_attendance",
+  "enable_leave_balance",
+  "setup_tab",
   "one_signal_id"
  ],
  "fields": [
@@ -34,13 +39,41 @@
    "fieldname": "one_signal_id",
    "fieldtype": "Small Text",
    "label": "One Signal Id"
+  },
+  {
+   "fieldname": "mobile_app_dashboard_tab",
+   "fieldtype": "Tab Break",
+   "label": "Mobile App Dashboard"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_approval_requests",
+   "fieldtype": "Check",
+   "label": "Enable Approval Requests"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_attendance",
+   "fieldtype": "Check",
+   "label": "Enable Attendance"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_leave_balance",
+   "fieldtype": "Check",
+   "label": "Enable Leave Balance"
+  },
+  {
+   "fieldname": "setup_tab",
+   "fieldtype": "Tab Break",
+   "label": "Setup"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-05 23:34:47.760484",
+ "modified": "2025-08-13 06:15:44.675585",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Settings",

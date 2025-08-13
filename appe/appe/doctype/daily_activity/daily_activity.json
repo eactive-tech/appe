@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-13 06:20:33.680324",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details_section",
+  "activity_for",
+  "activity_type",
+  "select_party"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "depends_on": "activity_for",
+   "fieldname": "activity_type",
+   "fieldtype": "Table MultiSelect",
+   "label": "Activity Type",
+   "options": "Multi Activity Type Select"
+  },
+  {
+   "fieldname": "activity_for",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Activity For",
+   "options": "\nAppe Customer\nAppe Employee\nOther"
+  },
+  {
+   "fieldname": "select_party",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Select Party",
+   "options": "activity_for"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-13 08:45:11.649000",
+ "modified_by": "Administrator",
+ "module": "Appe",
+ "name": "Daily Activity",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

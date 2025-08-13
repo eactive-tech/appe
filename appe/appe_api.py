@@ -184,28 +184,13 @@ def login_user(usr, pwd):
                 "message": "User Password  Is Not Correct",
             }
             return
-
-
-
         api_key, api_secret = generate_keys(user_email)
-        # frappe.local.login_manager.user = user_email
-        # frappe.local.login_manager.post_login()
         employee_data = frappe.db.get_all('Appe Employee', filters={'user_id': user_email}, fields=['*'])
         if employee_data :
             settings = frappe.get_doc('Appe Settings')
-
-            frappe.log_error("appe_api.py login_user employee_data", {
-                "status": True,
-                "message": "User Already Exists",
-                "data":{
-                "token" :f"token {api_key}:{api_secret}",
-                "user": employee_data[0].user_id,
-                "settings": settings.as_dict()
-                }
-            })
-
             frappe.local.response["message"] = {
                 "status": True,
+                "type": "employee",
                 "message": "Employee Login Successful",
                 "data":{
                     "token" :f"token {api_key}:{api_secret}",
@@ -216,12 +201,15 @@ def login_user(usr, pwd):
             }
             return 
         else:
+            settings = frappe.get_doc('Appe Settings')
             frappe.local.response["message"] = {
                 "status": True,
+                "type":"User",
                 "message": "User Login Successful",
                 "data":{
                     "token" :f"token {api_key}:{api_secret}",
                     "user": userm[0].name,
+                    "settings": settings,
                     "userData": userm[0],
                 }
 
@@ -578,6 +566,33 @@ def employee_details():
             return
     except Exception as e:
         frappe.log_error("employee_details error",f"{e}")
+        frappe.response.message={
+            'status':False,
+            'message':f'{e}'
+        }
+        return
+
+
+
+@frappe.whitelist()
+def user_details():
+    try:
+        user = frappe.get_doc("User", {"name": frappe.session.user})
+        if user:
+            frappe.response.message={
+                'status':True,
+                'message':'Successfully find user_details',
+                'data':user
+            }
+            return
+        else:
+            frappe.response.message={
+                'status':False,
+                'message':'No user details'
+            }
+            return
+    except Exception as e:
+        frappe.log_error("user_details error",f"{e}")
         frappe.response.message={
             'status':False,
             'message':f'{e}'
