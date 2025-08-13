@@ -7,7 +7,8 @@
  "field_order": [
   "module_name",
   "image",
-  "items"
+  "items",
+  "sequence_id"
  ],
  "fields": [
   {
@@ -28,11 +29,17 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "Mobile App Module Items"
+  },
+  {
+   "default": "0",
+   "fieldname": "sequence_id",
+   "fieldtype": "Int",
+   "label": "Sequence ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-22 21:54:23.830291",
+ "modified": "2025-08-13 16:47:11.305758",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Mobile App Module",

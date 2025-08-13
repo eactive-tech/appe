@@ -8,7 +8,8 @@
   "section_name",
   "items",
   "status",
-  "section_view"
+  "section_view",
+  "sequence_id"
  ],
  "fields": [
   {
@@ -46,11 +47,17 @@
    "label": "Section View",
    "options": "\nGrid View\nHorizontal Scrollable View",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sequence_id",
+   "fieldtype": "Int",
+   "label": "Sequence Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-22 23:33:52.426510",
+ "modified": "2025-08-13 16:49:45.238671",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Mobile App Dashboard",

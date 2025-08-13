@@ -471,7 +471,7 @@ def get_module_data():
         app_modules = frappe.db.get_all('Mobile App Module', fields=['*'])
         results = []
         for module in app_modules:
-            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'])
+            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'], order_by="sequence_id")
             results.append({'module_name': module.get('module_name'),'image': module.get('image'),'items': module_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return
@@ -488,7 +488,7 @@ def get_dashboard_sections():
         app_sections = frappe.db.get_all('Mobile App Dashboard', filters={'status':'Active'}, fields=['*'])
         results = []
         for section in app_sections:
-            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'])
+            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'], order_by="sequence_id")
             results.append({'section_view': section.get('section_view'),'section_name': section.get('section_name'),'image': section.get('image'),'items': section_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return
