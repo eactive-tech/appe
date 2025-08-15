@@ -486,22 +486,11 @@ def get_module_data():
 @frappe.whitelist()
 def get_dashboard_sections():
     try:
-        app_sections = frappe.db.get_all('Mobile App Dashboard', filters={'status':'Active'}, fields=['*'])
+        app_sections = frappe.db.get_all('Mobile App Dashboard', filters={'status':'Active'}, fields=['*'], order_by="sequence_id asc")
         results = []
         for section in app_sections:
-            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'], order_by="sequence_id")
-            chartData=[]
-            for item in section_items:
-                if item['linked_doctype'] == "Dashboard Chart":
-                    chart = frappe.get_doc("Dashboard Chart", item['reference_docname'])
-                    chart_data = get_chart_data(chart.name, chart.filters, chart.time_interval)
-
-                    chartData.append({
-                        "chart": chart,
-                        "data": chart_data
-                    })
-
-            results.append({'section_view': section.get('section_view'),'section_name': section.get('section_name'),'image': section.get('image'),'items': section_items, 'chartData': chartData})
+            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'])
+            results.append({'section_view': section.get('section_view'),'section_name': section.get('section_name'),'image': section.get('image'),'items': section_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return
     except Exception as e:
