@@ -468,10 +468,10 @@ def gettasks_and_request_and_attendancedata():
 @frappe.whitelist()
 def get_module_data():
     try:
-        app_modules = frappe.db.get_all('Mobile App Module', fields=['*'])
+        app_modules = frappe.db.get_all('Mobile App Module', fields=['*'], order_by="sequence_id asc")
         results = []
         for module in app_modules:
-            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'], order_by="sequence_id")
+            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'])
             results.append({'module_name': module.get('module_name'),'image': module.get('image'),'items': module_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return
@@ -485,10 +485,10 @@ def get_module_data():
 @frappe.whitelist()
 def get_dashboard_sections():
     try:
-        app_sections = frappe.db.get_all('Mobile App Dashboard', filters={'status':'Active'}, fields=['*'])
+        app_sections = frappe.db.get_all('Mobile App Dashboard', filters={'status':'Active'}, fields=['*'], order_by="sequence_id asc")
         results = []
         for section in app_sections:
-            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'], order_by="sequence_id")
+            section_items = frappe.get_all('Mobile App Dashboard Items', filters={'parent': section.name}, fields=['*'])
             results.append({'section_view': section.get('section_view'),'section_name': section.get('section_name'),'image': section.get('image'),'items': section_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return

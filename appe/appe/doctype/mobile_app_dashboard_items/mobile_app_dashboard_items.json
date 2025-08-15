@@ -55,7 +55,7 @@
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage",
+   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage\nChart\nNumber Card",
    "reqd": 1
   },
   {
@@ -80,7 +80,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-03 16:31:34.002846",
+ "modified": "2025-08-13 17:46:25.567432",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Mobile App Dashboard Items",
