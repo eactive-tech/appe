@@ -9,7 +9,6 @@ import requests
 from frappe.utils.password import check_password, get_password_reset_limit
 import gzip
 from frappe.utils import get_url
-from frappe.desk.doctype.dashboard_chart.dashboard_chart import get_chart_data
 
 
 @frappe.whitelist()
@@ -175,7 +174,7 @@ def login_user(usr, pwd):
     user_email = ""
     user_exist = frappe.db.count("User",{'email': usr})
     if user_exist > 0:
-        userm = frappe.db.get_all('User', filters={'email': usr}, fields=['*'])
+        userm = frappe.db.get_all('User', filters={'email': usr}, fields=['name','email','username','full_name','user_image','mobile_no','location','gender','language','time_zone','enabled','user_type'])
         user_email = userm[0].name
         try:
             check_password(user_email, pwd)
@@ -189,6 +188,9 @@ def login_user(usr, pwd):
         employee_data = frappe.db.get_all('Appe Employee', filters={'user_id': user_email}, fields=['*'])
         if employee_data :
             settings = frappe.get_doc('Appe Settings')
+            userm[0]['checkin_mandatory']= employee_data[0].checkin_mandatory or 0
+            userm[0]['enable_live_location_tracking']= employee_data[0].enable_live_location_tracking or 0
+            userm[0]['enable_faceid']= employee_data[0].enable_faceid or 0
             frappe.local.response["message"] = {
                 "status": True,
                 "type": "employee",
@@ -197,7 +199,7 @@ def login_user(usr, pwd):
                     "token" :f"token {api_key}:{api_secret}",
                     "user": employee_data[0].user_id,
                     "settings": settings,
-                    "userData": userm[0]
+                    "userData": userm[0],
                 }
             }
             return 
@@ -469,10 +471,10 @@ def gettasks_and_request_and_attendancedata():
 @frappe.whitelist()
 def get_module_data():
     try:
-        app_modules = frappe.db.get_all('Mobile App Module', fields=['*'])
+        app_modules = frappe.db.get_all('Mobile App Module', fields=['*'], order_by="sequence_id asc")
         results = []
         for module in app_modules:
-            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'], order_by="sequence_id")
+            module_items = frappe.get_all('Mobile App Module Items', filters={'parent': module.name}, fields=['*'])
             results.append({'module_name': module.get('module_name'),'image': module.get('image'),'items': module_items})
         frappe.response.message={'status':True,'message':'','data':results}
         return
@@ -546,6 +548,128 @@ def remove_assignment():
         }
         return
 
+# @frappe.whitelist()
+# def leave_balance():
+#     try:
+#         employee = frappe.get_doc("Appe Employee",{"user_id":frappe.session.user})
+#         if employee:
+#             frappe.response.message={
+#                 'status':True,
+#                 'message':'Successfully find employee',
+#                 'data':[
+#                     {
+#                         "type": "Annual Leave",
+#                         "total": 20,
+#                         "used": 8,
+#                         "remaining": 12,
+#                         "color": Color(0xFF3B82F6),
+#                     },
+#                     {
+#                         "type": "Sick Leave",
+#                         "total": 10,
+#                         "used": 3,
+#                         "remaining": 7,
+#                         "color": Color(0xFFEF4444),
+#                     },
+#                     {
+#                         "type": "Casual Leave",
+#                         "total": 12,
+#                         "used": 5,
+#                         "remaining": 7,
+#                         "color": Color(0xFF10B981),
+#                     },
+#                     {
+#                         "type": "Work From Home",
+#                         "total": 15,
+#                         "used": 6,
+#                         "remaining": 9,
+#                         "color": Color(0xFFF59E0B),
+#                     },
+#                     ];
+
+
+#             }
+#             # leave_balance = frappe.get_all('Leave Balance', filters={'employee': employee.name}, fields=['*'])
+#             # if leave_balance:
+#             #     frappe.response.message={
+#             #         'status':True,
+#             #         'message':'Successfully find leave balance',
+#             #         'data':leave_balance
+#             #     }
+#             #     return
+#             # else:
+#             #     frappe.response.message={
+#             #         'status':False,
+#             #         'message':'No leave balance found'
+#             #     }
+#             #     return
+#         else:
+#             frappe.response.message={
+#                 'status':False,
+#                 'message':'No employee found'
+#             }
+#             return
+#     except Exception as e:
+#         frappe.log_error("leave_balance error",f"{e}")
+#         frappe.response.message={
+#             'status':False,
+#             'message':f'{e}'
+#         }
+#         return
+
+@frappe.whitelist()
+def leave_balance():
+    try:
+        employee = frappe.get_doc("Appe Employee", {"user_id": frappe.session.user})
+        if employee:
+            frappe.response.message = {
+                'status': True,
+                'message': 'Successfully find employee',
+                'data': [
+                    {
+                        "type": "Annual L e ave",
+                        "total": 20,
+                        "used": 8,
+                        "remaining": 12,
+                        "color": "0xFF3B82F6",  # Blue
+                    },
+                    {
+                        "type": "Sick Leave",
+                        "total": 10,
+                        "used": 3,
+                        "remaining": 7,
+                        "color": "0xFFEF4444",  # Red
+                    },
+                    {
+                        "type": "Casual Leave",
+                        "total": 12,
+                        "used": 5,
+                        "remaining": 7,
+                        "color": "0xFF10B981",  # Green
+                    },
+                    {
+                        "type": "Work From Home",
+                        "total": 15,
+                        "used": 6,
+                        "remaining": 9,
+                        "color": "0xFFF59E0B",  # Orange
+                    },
+                ]
+            }
+            return
+        else:
+            frappe.response.message = {
+                'status': False,
+                'message': 'No employee found'
+            }
+            return
+    except Exception as e:
+        frappe.log_error("leave_balance error", f"{e}")
+        frappe.response.message = {
+            'status': False,
+            'message': f'{e}'
+        }
+        return
 
 @frappe.whitelist()
 def employee_details():
@@ -578,12 +702,19 @@ def employee_details():
 @frappe.whitelist()
 def user_details():
     try:
-        user = frappe.get_doc("User", {"name": frappe.session.user})
+        user = frappe.db.get_all('User', filters={'email': frappe.session.user}, fields=['name','email','username','full_name','user_image','mobile_no','location','gender','language','time_zone','enabled','user_type'])
+        
         if user:
+            employee_data = frappe.db.get_all('Appe Employee', filters={'user_id': frappe.session.user}, fields=['*'])
+            if employee_data :
+                settings = frappe.get_doc('Appe Settings')
+                user[0]['checkin_mandatory']= employee_data[0].checkin_mandatory or 0
+                user[0]['enable_live_location_tracking']= employee_data[0].enable_live_location_tracking or 0
+                user[0]['enable_faceid']= employee_data[0].enable_faceid or 0
             frappe.response.message={
                 'status':True,
                 'message':'Successfully find user_details',
-                'data':user
+                'data':user[0]
             }
             return
         else:

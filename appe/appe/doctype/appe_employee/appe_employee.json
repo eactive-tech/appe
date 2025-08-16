@@ -9,6 +9,7 @@
   "naming_series",
   "employee_name",
   "user_id",
+  "status",
   "section_break_2mp1",
   "lft",
   "rgt",
@@ -17,6 +18,7 @@
   "parent_appe_employee",
   "appe_setting_tab",
   "checkin_mandatory",
+  "custom_checkin_mandatory",
   "enable_faceid",
   "enable_live_location_tracking"
  ],
@@ -99,15 +101,27 @@
    "fieldname": "enable_live_location_tracking",
    "fieldtype": "Check",
    "label": "Enable Live Location Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_checkin_mandatory",
+   "fieldtype": "Check",
+   "label": "custom_checkin_mandatory"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nDisabled"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-08-10 09:55:37.023136",
+ "modified": "2025-08-15 14:27:58.037175",
  "modified_by": "Administrator",
- "module": "appe",
+ "module": "Appe",
  "name": "Appe Employee",
  "naming_rule": "By \"Naming Series\" field",
  "nsm_parent_field": "parent_appe_employee",

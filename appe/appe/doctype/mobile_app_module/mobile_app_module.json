@@ -31,15 +31,14 @@
    "options": "Mobile App Module Items"
   },
   {
-   "default": "0",
    "fieldname": "sequence_id",
    "fieldtype": "Int",
-   "label": "Sequence ID"
+   "label": "sequence_id"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-13 16:47:11.305758",
+ "modified": "2025-08-15 12:52:50.891954",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Mobile App Module",

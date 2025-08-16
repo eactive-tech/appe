@@ -15,32 +15,32 @@ import base64
 
 class EmployeeFace(Document):
     
-	def before_insert(self):
-		# Check if person group exists
-		group = get_group("employees")
-		if group.get("error"):
-			frappe.log_error("Person group not found, creating: employees")
-			created = create_group("employees", "Employees")
-			frappe.log_error(f"Person group created", f"{created}")
-		else:
-			frappe.log_error("Person group found: employees",group)
+	# def before_insert(self):
+	# 	# Check if person group exists
+	# 	group = get_group("employees")
+	# 	if group.get("error"):
+	# 		frappe.log_error("Person group not found, creating: employees")
+	# 		created = create_group("employees", "Employees")
+	# 		frappe.log_error(f"Person group created", f"{created}")
+	# 	else:
+	# 		frappe.log_error("Person group found: employees",group)
 
-		# Create Person in Azure
-		person = create_person("employees", self.employee_id)
-		frappe.log_error(f"Person created in Azure", f"{person}")
+	# 	# Create Person in Azure
+	# 	person = create_person("employees", self.employee_id)
+	# 	frappe.log_error(f"Person created in Azure", f"{person}")
 
-		# Add Face
-		face_data = add_face_to_person("employees", person["personId"], self.face_image)
-		frappe.log_error(f"Face added to person",f" {face_data}")
+	# 	# Add Face
+	# 	face_data = add_face_to_person("employees", person["personId"], self.face_image)
+	# 	frappe.log_error(f"Face added to person",f" {face_data}")
 
-		# Start Training Group
-		training_status = train_group("employees")
-		frappe.log_error(f"Person group trained. Status",f" {training_status}")
+	# 	# Start Training Group
+	# 	training_status = train_group("employees")
+	# 	frappe.log_error(f"Person group trained. Status",f" {training_status}")
 
-		# Save Azure face id
-		self.azure_face_id = face_data["persistedFaceId"]
-		self.person_group_id = "employees"
-		self.person_id = person["personId"]
+	# 	# Save Azure face id
+	# 	self.azure_face_id = face_data["persistedFaceId"]
+	# 	self.person_group_id = "employees"
+	# 	self.person_id = person["personId"]
     
 	def before_save(self):
 		try:

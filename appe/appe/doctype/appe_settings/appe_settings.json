@@ -14,7 +14,8 @@
   "enable_attendance",
   "enable_leave_balance",
   "setup_tab",
-  "one_signal_id"
+  "app_id",
+  "onesignal_api_key"
  ],
  "fields": [
   {
@@ -34,11 +35,6 @@
    "fieldname": "enable_live_location_tracking",
    "fieldtype": "Check",
    "label": " Enable Live Location Tracking"
-  },
-  {
-   "fieldname": "one_signal_id",
-   "fieldtype": "Small Text",
-   "label": "One Signal Id"
   },
   {
    "fieldname": "mobile_app_dashboard_tab",
@@ -66,14 +62,28 @@
   {
    "fieldname": "setup_tab",
    "fieldtype": "Tab Break",
-   "label": "Setup"
+   "label": "Push Notification"
+  },
+  {
+   "description": "This is a One signal App ID",
+   "fieldname": "app_id",
+   "fieldtype": "Small Text",
+   "label": "One Signal Id",
+   "max_height": "100px"
+  },
+  {
+   "description": "One Signal Auth Token",
+   "fieldname": "onesignal_api_key",
+   "fieldtype": "Small Text",
+   "label": "Onesignal api key",
+   "max_height": "35px"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-13 06:15:44.675585",
+ "modified": "2025-08-16 09:28:07.071120",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Settings",
