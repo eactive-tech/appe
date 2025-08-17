@@ -149,6 +149,12 @@ app_license = "mit"
 # 	}
 # }
 
+doc_events = {
+	"Prepared Report": {
+		"on_update": "appe.appe_api.update_appe_reports",
+	}
+}
+
 # Scheduled Tasks
 # ---------------
 
