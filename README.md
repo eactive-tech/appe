@@ -1,12 +1,14 @@
 # Appe — Mobile App for Frappe & ERPNext
-![Appe Banner](docs/banner.png)
+<p align="center">
+  <img src="https://eactivetechnologies.com/files/Appe.png" alt="Appe Banner" width="200" />
+</p>
 
 > **Frappe, anywhere you go.**  
 > A mobile-first app for Frappe and ERPNext, making your business accessible on the move.
 
 ---
 
-## 📌 Overview
+## Description
 
 **Appe** is a mobile extension for the [Frappe Framework](https://frappeframework.com/) and [ERPNext](https://erpnext.com/), designed to make your ERP and custom Frappe apps easy to use on mobile devices.  
 With Appe, you can connect to **Frappe**, **ERPNext**, or any other Frappe-based applications — all from one app.
@@ -15,23 +17,52 @@ Whether you are running a business on ERPNext or managing custom Frappe modules,
 
 ---
 
-## ✨ Key Features
-
-- 📱 **Mobile-First Experience** – Clean and responsive UI optimized for small screens.
-- 🔗 **Multi-App Connectivity** – Access ERPNext and other Frappe apps from one place.
-- ⚡ **Fast & Lightweight** – Smooth performance even on slower devices.
-- 🔒 **Secure Login** – Works with your existing Frappe authentication system.
-- 🌍 **Connect from Anywhere** – Use your cloud-hosted or self-hosted Frappe instance.
-- 🔄 **Easy Installation** – Install Appe directly from your Frappe site.
+## Key Features
+- **Mobile-First Experience** – Clean and responsive UI optimized for small screens.
+- **Multi-App Connectivity** – Access ERPNext and other Frappe apps from one place.
+- **Fast & Lightweight** – Smooth performance even on slower devices.
+- **Secure Login** – Works with your existing Frappe authentication system (Face Recognization, Employee Location Tracking).
+- **Connect from Anywhere** – Use your cloud-hosted or self-hosted Frappe instance.
+- **Easy Installation** – Install Appe directly from your Frappe site.
 
 ---
 
-## 📦 Installation
+## Extra Features
+- **Face Recognition** – Authenticate employees during check-in and check-out.  
+- **Location Tracking** – Store employee locations automatically every 15 minutes.
 
-Install **Appe** using the [bench](https://github.com/frappe/bench) CLI:
+## Install Mobile App
+- **Android** – [Appe Mobile App](https://play.google.com/store/apps/details?id=com.kameshkumar.appe&pcampaignid=web_share)  
+- **IOS** – Comming Soon.  
+
+
+## Dependencies
+<p>For the Face Recognition Service in our mobile app, we are utilizing the following dependencies:</p>
+
+```bash
+dependencies = [
+    # "frappe~=15.0.0" # Installed and managed by bench.
+    "face-recognition",
+    "numpy",
+    "pillow",
+    "dlib",
+    "opencv-contrib-python"
+]
+```
+
+## Installation
+
+Install **Appe** using the [bench](https://github.com/frappe/bench) CLI
+<p>Run following commands:</p>
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
 sudo apt install cmake
 bench get-app https://github.com/eactive-tech/appe.git --branch main
 bench install-app appe
+
+```
+
+## Help & Support
+If you have any issues, questions, or feedback, please don't hesitate to reach out to us via email at: support@eactive.in.
+For more information, please visit: https://eactivetechnologies.com.

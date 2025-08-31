@@ -297,66 +297,75 @@ def verifyOTP(usr, pwd):
 @frappe.whitelist()
 def storelocation():
     try:
-        latitude = frappe.form_dict.get('latitude')
-        longitude = frappe.form_dict.get('longitude')
-        device_info = frappe.form_dict.get('device_info') or {}
-        timestamp = frappe.form_dict.get('timestamp')
+        frappe.log_error("location",frappe.form_dict)
+        locations = frappe.form_dict.get('locations') or []
 
-        if not latitude or not longitude:
-            frappe.throw(_("Latitude and Longitude are required."))
+        for loc in locations:
+            latitude = loc.get('latitude')
+            longitude = loc.get('longitude')
+            device_info = loc.get('device_info') or {}
+            timestamp = loc.get('timestamp')
 
-        current_timestamp = frappe.utils.format_datetime(frappe.utils.get_datetime(timestamp), 'YYYY-MM-dd HH:mm:ss')
+            # latitude = frappe.form_dict.get('latitude')
+            # longitude = frappe.form_dict.get('longitude')
+            # device_info = frappe.form_dict.get('device_info') or {}
+            # timestamp = frappe.form_dict.get('timestamp')
 
-        user = frappe.session.user
+            if not latitude or not longitude:
+                frappe.throw(_("Latitude and Longitude are required."))
 
-        if frappe.db.exists("Appe Employee", {"user_id": user}):
-            employee = frappe.get_doc("Appe Employee", {"user_id": user})
-            two_days_ago = frappe.utils.add_days(frappe.utils.now_datetime(), -2)
+            current_timestamp = frappe.utils.format_datetime(frappe.utils.get_datetime(timestamp), 'YYYY-MM-dd HH:mm:ss')
 
-            recent_timestamps = frappe.db.get_all(
-                "Employee Location",
-                filters={"employee": employee.name, "timestamp": [">=", two_days_ago]},
-                fields=["timestamp"],
-                order_by="timestamp DESC"
-            )
+            user = frappe.session.user
 
-            for record in recent_timestamps:
-                if record["timestamp"]:
-                    last_timestamp = frappe.utils.get_datetime(record["timestamp"])
-                    if frappe.utils.time_diff_in_seconds(current_timestamp, last_timestamp) < 120:
-                        frappe.response.message = {
-                            'status': False,
-                            'message': 'Location update too frequent. Please wait at least 2 minutes.'
-                        }
-                        return
-                        # frappe.throw('Location update too frequent. Please wait at least 2 minutes.')
+            if frappe.db.exists("Appe Employee", {"user_id": user}):
+                employee = frappe.get_doc("Appe Employee", {"user_id": user})
+                two_days_ago = frappe.utils.add_days(frappe.utils.now_datetime(), -2)
 
-            # Insert new location
-            location_doc = frappe.get_doc({
-                "doctype": "Employee Location",
-                "latitude": latitude,
-                "longitude": longitude,
-                "employee": employee.name,
-                "battery_level": device_info.get('battery_level'),
-                "gps": device_info.get('gps_status'),
-                "wifi_status": device_info.get('wifi_status'),
-                "airplane_mode": device_info.get('airplane_mode_status'),
-                "mobile_ip_address": device_info.get('mobile_ip_address'),
-                "sdk_version": device_info.get('sdk_version'),
-                "brand": device_info.get('brand'),
-                "model": device_info.get('model'),
-                "mobile_data_status": device_info.get('mobile_data_status'),
-                "user": user,
-                "timestamp": current_timestamp
-            })
-            location_doc.insert()
-            frappe.db.commit()
+                recent_timestamps = frappe.db.get_all(
+                    "Employee Location",
+                    filters={"employee": employee.name, "timestamp": [">=", two_days_ago]},
+                    fields=["timestamp"],
+                    order_by="timestamp DESC"
+                )
 
-            frappe.response.message = {
-                'status': True,
-                'message': 'Location stored successfully.'
-            }
-            return
+                for record in recent_timestamps:
+                    if record["timestamp"]:
+                        last_timestamp = frappe.utils.get_datetime(record["timestamp"])
+                        if frappe.utils.time_diff_in_seconds(current_timestamp, last_timestamp) < 120:
+                            frappe.response.message = {
+                                'status': False,
+                                'message': 'Location update too frequent. Please wait at least 2 minutes.'
+                            }
+                            return
+                            # frappe.throw('Location update too frequent. Please wait at least 2 minutes.')
+
+                # Insert new location
+                location_doc = frappe.get_doc({
+                    "doctype": "Employee Location",
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "employee": employee.name,
+                    "battery_level": device_info.get('battery_level'),
+                    "gps": device_info.get('gps_status'),
+                    "wifi_status": device_info.get('wifi_status'),
+                    "airplane_mode": device_info.get('airplane_mode_status'),
+                    "mobile_ip_address": device_info.get('mobile_ip_address'),
+                    "sdk_version": device_info.get('sdk_version'),
+                    "brand": device_info.get('brand'),
+                    "model": device_info.get('model'),
+                    "mobile_data_status": device_info.get('mobile_data_status'),
+                    "user": user,
+                    "timestamp": current_timestamp
+                })
+                location_doc.insert()
+                frappe.db.commit()
+
+                frappe.response.message = {
+                    'status': True,
+                    'message': 'Location stored successfully.'
+                }
+                return
 
     except Exception as e:
         frappe.log_error("Location Error", e)
@@ -548,75 +557,6 @@ def remove_assignment():
         }
         return
 
-# @frappe.whitelist()
-# def leave_balance():
-#     try:
-#         employee = frappe.get_doc("Appe Employee",{"user_id":frappe.session.user})
-#         if employee:
-#             frappe.response.message={
-#                 'status':True,
-#                 'message':'Successfully find employee',
-#                 'data':[
-#                     {
-#                         "type": "Annual Leave",
-#                         "total": 20,
-#                         "used": 8,
-#                         "remaining": 12,
-#                         "color": Color(0xFF3B82F6),
-#                     },
-#                     {
-#                         "type": "Sick Leave",
-#                         "total": 10,
-#                         "used": 3,
-#                         "remaining": 7,
-#                         "color": Color(0xFFEF4444),
-#                     },
-#                     {
-#                         "type": "Casual Leave",
-#                         "total": 12,
-#                         "used": 5,
-#                         "remaining": 7,
-#                         "color": Color(0xFF10B981),
-#                     },
-#                     {
-#                         "type": "Work From Home",
-#                         "total": 15,
-#                         "used": 6,
-#                         "remaining": 9,
-#                         "color": Color(0xFFF59E0B),
-#                     },
-#                     ];
-
-
-#             }
-#             # leave_balance = frappe.get_all('Leave Balance', filters={'employee': employee.name}, fields=['*'])
-#             # if leave_balance:
-#             #     frappe.response.message={
-#             #         'status':True,
-#             #         'message':'Successfully find leave balance',
-#             #         'data':leave_balance
-#             #     }
-#             #     return
-#             # else:
-#             #     frappe.response.message={
-#             #         'status':False,
-#             #         'message':'No leave balance found'
-#             #     }
-#             #     return
-#         else:
-#             frappe.response.message={
-#                 'status':False,
-#                 'message':'No employee found'
-#             }
-#             return
-#     except Exception as e:
-#         frappe.log_error("leave_balance error",f"{e}")
-#         frappe.response.message={
-#             'status':False,
-#             'message':f'{e}'
-#         }
-#         return
-
 @frappe.whitelist()
 def leave_balance():
     try:
@@ -627,7 +567,7 @@ def leave_balance():
                 'message': 'Successfully find employee',
                 'data': [
                     {
-                        "type": "Annual L e ave",
+                        "type": "Annual Leave",
                         "total": 20,
                         "used": 8,
                         "remaining": 12,
@@ -772,7 +712,9 @@ def employee_checkin():
             'event_date':frappe.utils.now_datetime(),
             'device_ip':'',
             'log_type':frappe.form_dict.log_type,
-            'latlong':frappe.form_dict.latlong
+            'latlong':frappe.form_dict.latlong,
+            "latitude": frappe.form_dict.latitude or "",
+            "longitude": frappe.form_dict.longitude or "",
         }).insert()
         frappe.db.commit()
         frappe.response.message={
