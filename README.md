@@ -58,10 +58,11 @@ Install **Appe** using the [bench](https://github.com/frappe/bench) CLI
 ```bash
 cd $PATH_TO_YOUR_BENCH
 sudo apt install cmake
-bench get-app https://github.com/eactive-tech/appe.git --branch main
+bench get-app https://github.com/eactive-tech/appe.git --branch develop
 bench install-app appe
 
 ```
+
 
 ## Help & Support
 If you have any issues, questions, or feedback, please don't hesitate to reach out to us via email at: support@eactive.in.
