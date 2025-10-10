@@ -4,7 +4,7 @@
 from io import BytesIO
 import frappe
 from frappe.model.document import Document
-from appe.azure_face_api import create_person, add_face_to_person, train_group, get_group, create_group
+# from appe.azure_face_api import create_person, add_face_to_person, train_group, get_group, create_group
 import face_recognition
 import requests
 import numpy as np
