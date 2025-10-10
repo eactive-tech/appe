@@ -6,7 +6,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from frappe import _
 
-@frappe.whitelist(allow_guest=True)  # Remove allow_guest=True if authentication needed
+@frappe.whitelist()  # Remove allow_guest=True if authentication needed
 def get_post_offices():
     try:
         # Validate input

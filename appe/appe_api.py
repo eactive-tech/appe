@@ -78,7 +78,7 @@ def update_appe_reports(doc,event):
     except Exception as e:
         frappe.log_error("update_appe_reports error", str(e))
     
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def receive_message():
     try:
         message = frappe.form_dict
