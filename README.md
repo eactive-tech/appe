@@ -42,7 +42,7 @@ Install **Appe** using the [bench](https://github.com/frappe/bench) CLI
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app https://github.com/eactive-tech/appe.git --branch version-15
+bench get-app https://github.com/eactive-tech/appe.git --branch version-14
 bench install-app appe
 
 ```
