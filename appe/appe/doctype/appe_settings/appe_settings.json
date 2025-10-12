@@ -7,7 +7,6 @@
  "engine": "InnoDB",
  "field_order": [
   "enable_checkin",
-  "enable_checkin_with_faceid",
   "enable_live_location_tracking",
   "mobile_app_dashboard_tab",
   "enable_approval_requests",
@@ -23,12 +22,6 @@
    "fieldname": "enable_checkin",
    "fieldtype": "Check",
    "label": "Enable Check-In"
-  },
-  {
-   "default": "0",
-   "fieldname": "enable_checkin_with_faceid",
-   "fieldtype": "Check",
-   "label": "Enable Check-In With Face-Id"
   },
   {
    "default": "0",

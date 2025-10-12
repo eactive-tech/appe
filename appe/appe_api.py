@@ -190,7 +190,7 @@ def login_user(usr, pwd):
             settings = frappe.get_doc('Appe Settings')
             userm[0]['checkin_mandatory']= employee_data[0].checkin_mandatory or 0
             userm[0]['enable_live_location_tracking']= employee_data[0].enable_live_location_tracking or 0
-            userm[0]['enable_faceid']= employee_data[0].enable_faceid or 0
+            userm[0]['enable_faceid']= 0
             frappe.local.response["message"] = {
                 "status": True,
                 "type": "employee",
@@ -650,7 +650,7 @@ def user_details():
                 settings = frappe.get_doc('Appe Settings')
                 user[0]['checkin_mandatory']= employee_data[0].checkin_mandatory or 0
                 user[0]['enable_live_location_tracking']= employee_data[0].enable_live_location_tracking or 0
-                user[0]['enable_faceid']= employee_data[0].enable_faceid or 0
+                user[0]['enable_faceid']=  0
             frappe.response.message={
                 'status':True,
                 'message':'Successfully find user_details',
