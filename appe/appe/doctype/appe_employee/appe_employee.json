@@ -19,7 +19,6 @@
   "appe_setting_tab",
   "checkin_mandatory",
   "custom_checkin_mandatory",
-  "enable_faceid",
   "enable_live_location_tracking"
  ],
  "fields": [
@@ -91,12 +90,6 @@
    "fieldname": "checkin_mandatory",
    "fieldtype": "Check",
    "label": "Check-in Mandatory"
-  },
-  {
-   "default": "0",
-   "fieldname": "enable_faceid",
-   "fieldtype": "Check",
-   "label": "Enable FaceID"
   },
   {
    "default": "0",
