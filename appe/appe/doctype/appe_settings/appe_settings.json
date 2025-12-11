@@ -59,9 +59,9 @@
   },
   {
    "description": "This is a One signal App ID",
-   "fieldname": "app_id",
+   "fieldname": "onesignal_api_key",
    "fieldtype": "Small Text",
-   "label": "One Signal Id",
+   "label": "One Signal API Key",
    "max_height": "100px"
   },
   {
