@@ -7,13 +7,14 @@
  "engine": "InnoDB",
  "field_order": [
   "enable_checkin",
+  "enable_checkin_with_faceid",
   "enable_live_location_tracking",
   "mobile_app_dashboard_tab",
   "enable_approval_requests",
   "enable_attendance",
   "enable_leave_balance",
   "setup_tab",
-  "app_id",
+  "onesignal_app_id",
   "onesignal_api_key"
  ],
  "fields": [
@@ -22,6 +23,12 @@
    "fieldname": "enable_checkin",
    "fieldtype": "Check",
    "label": "Enable Check-In"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_checkin_with_faceid",
+   "fieldtype": "Check",
+   "label": "Enable Check-In With Face-Id"
   },
   {
    "default": "0",
@@ -58,25 +65,25 @@
    "label": "Push Notification"
   },
   {
-   "description": "This is a One signal App ID",
-   "fieldname": "onesignal_api_key",
-   "fieldtype": "Small Text",
-   "label": "One Signal API Key",
-   "max_height": "100px"
-  },
-  {
    "description": "One Signal Auth Token",
    "fieldname": "onesignal_api_key",
    "fieldtype": "Small Text",
    "label": "Onesignal api key",
    "max_height": "35px"
+  },
+  {
+   "description": "This is a One signal App ID",
+   "fieldname": "onesignal_app_id",
+   "fieldtype": "Small Text",
+   "label": "OneSignal App Id",
+   "max_height": "100px"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-16 09:28:07.071120",
+ "modified": "2025-11-30 00:03:13.728897",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Settings",

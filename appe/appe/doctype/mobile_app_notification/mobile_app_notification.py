@@ -36,6 +36,8 @@ class MobileAppNotification(Document):
 
 
 			j = json.dumps(payload)
+			# frappe.log_error("Sending OneSignal Payload", json.dumps(payload))
 			response = requests.post(url, data=j, headers=headers)
+			frappe.log_error("OneSignal Response", f"{response.status_code}: {response.text}")
 		else:
 			frappe.throw("OneSignal API Key or App ID not configured in Appe Settings")

@@ -9,6 +9,7 @@
   "label",
   "type",
   "refrence_doctype",
+  "refrence_docname",
   "report_name",
   "description",
   "image",
@@ -54,7 +55,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Type",
-   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage",
+   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage\nChart\nNumber Card",
    "reqd": 1
   },
   {
@@ -68,18 +69,25 @@
    "fieldtype": "Link",
    "label": "Report Name",
    "options": "Appe Report"
+  },
+  {
+   "fieldname": "refrence_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Refrence Docname",
+   "options": "refrence_doctype"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-03 16:32:45.439908",
+ "modified": "2026-02-02 10:23:02.348611",
  "modified_by": "Administrator",
- "module": "Appe",
+ "module": "appe",
  "name": "Mobile App Module Items",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
