@@ -14,7 +14,7 @@
   "enable_attendance",
   "enable_leave_balance",
   "setup_tab",
-  "app_id",
+  "onesignal_app_id",
   "onesignal_api_key"
  ],
  "fields": [
@@ -65,25 +65,25 @@
    "label": "Push Notification"
   },
   {
-   "description": "This is a One signal App ID",
-   "fieldname": "app_id",
-   "fieldtype": "Small Text",
-   "label": "One Signal Id",
-   "max_height": "100px"
-  },
-  {
    "description": "One Signal Auth Token",
    "fieldname": "onesignal_api_key",
    "fieldtype": "Small Text",
    "label": "Onesignal api key",
    "max_height": "35px"
+  },
+  {
+   "description": "This is a One signal App ID",
+   "fieldname": "onesignal_app_id",
+   "fieldtype": "Small Text",
+   "label": "OneSignal App Id",
+   "max_height": "100px"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-16 09:28:07.071120",
+ "modified": "2025-11-30 00:03:13.728897",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Settings",

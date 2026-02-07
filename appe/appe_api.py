@@ -297,7 +297,7 @@ def verifyOTP(usr, pwd):
 @frappe.whitelist()
 def storelocation():
     try:
-        frappe.log_error("location",frappe.form_dict)
+        # frappe.log_error("location",frappe.form_dict)
         locations = frappe.form_dict.get('locations') or []
 
         for loc in locations:

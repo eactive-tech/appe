@@ -45,7 +45,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Section View",
-   "options": "\nGrid View\nHorizontal Scrollable View",
+   "options": "\nGrid View\nHorizontal Scrollable View\nChart View\nNumber Card View",
    "reqd": 1
   },
   {

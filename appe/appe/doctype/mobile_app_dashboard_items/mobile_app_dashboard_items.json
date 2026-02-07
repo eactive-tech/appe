@@ -55,7 +55,7 @@
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage",
+   "options": "\nDoctype\nSingle Doctype\nReport\nForm\nDashboard\nScreen\nWebPage\nChart\nNumber Card",
    "reqd": 1
   },
   {

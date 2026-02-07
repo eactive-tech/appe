@@ -6,7 +6,6 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_lx90",
-  "amended_from",
   "employee",
   "employee_name",
   "attendance_date",
@@ -37,6 +36,7 @@
    "reqd": 1
   },
   {
+   "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -73,7 +73,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-13 06:05:12.559450",
+ "modified": "2025-12-01 11:45:55.778961",
  "modified_by": "Administrator",
  "module": "Appe",
  "name": "Appe Attendance",
