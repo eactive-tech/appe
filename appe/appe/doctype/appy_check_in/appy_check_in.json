@@ -16,6 +16,8 @@
   {
    "fieldname": "employee",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Employee",
    "options": "Appe Employee"
   },
@@ -27,6 +29,8 @@
   {
    "fieldname": "log_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Log Type",
    "options": "\nIN\nOUT"
   },
@@ -48,9 +52,9 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-08 22:05:38.314237",
+ "modified": "2026-02-14 15:04:58.038893",
  "modified_by": "Administrator",
- "module": "Appe",
+ "module": "appe",
  "name": "Appy Check-in",
  "owner": "Administrator",
  "permissions": [
