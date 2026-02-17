@@ -369,7 +369,7 @@ def gettasks_and_request_and_attendancedata():
         pending_approvals = frappe.get_all(
             "Workflow Action",
             fields=["*"],
-            filters=[["Workflow Action","user","=",user],["Workflow Action","status","=","Open"]]
+            filters=[["Workflow Action","user","=",user],["Workflow Action","status","=","Open"]],
             or_filters=[["Workflow Action Permitted Role","role", "in", roles]],
             distinct=True
         )
