@@ -112,9 +112,9 @@ def login_user(usr, pwd):
         }
         return
     user_email = ""
-    user_exist = frappe.db.count("User",{'email': usr})
+    user_exist = frappe.db.count("User",{'email': usr,'enabled':1})
     if user_exist > 0:
-        userm = frappe.db.get_all('User', filters={'email': usr}, fields=['name','email','username','full_name','user_image','mobile_no','location','gender','language','time_zone','enabled','user_type'])
+        userm = frappe.db.get_all('User', filters={'email': usr,'enabled':1}, fields=['name','email','username','full_name','user_image','mobile_no','location','gender','language','time_zone','enabled','user_type'])
         user_email = userm[0].name
         try:
             check_password(user_email, pwd)
