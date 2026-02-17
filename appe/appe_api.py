@@ -12,17 +12,6 @@ from frappe.utils import get_url
 
 
 @frappe.whitelist()
-def create_appe_report_print():
-    try:
-        frappe.log_error('create report',frappe.form_dict)
-
-    except Exception as e:
-        frappe.response.message={
-            'status':False,
-            'message':f'{e}'
-        }
-
-@frappe.whitelist()
 def update_appe_reports(doc,event):
     # frappe.log_error("status update_appe_reports doc",doc)
     try:
@@ -94,56 +83,7 @@ def receive_message():
             'messgae':f"{e}"
         }
 
-    
-@frappe.whitelist()
-def upload_file_in_doctype(datas, filename, docname, doctype):
-   for data in datas:
-        try:
-            filename_ext = f'/home/frappe/frappe-bench/sites/ss.erpdesks.com/private/files/{filename}.png'
-            base64data = data.replace('data:image/jpeg;base64,', '')
-            imgdata = base64.b64decode(base64data)
-            with open(filename_ext, 'wb') as file:
-                file.write(imgdata)
-
-            doc = frappe.get_doc(
-                {
-                    "file_name": f'{filename}.png',
-                    "is_private": 1,
-                    "file_url": f'/private/files/{filename}.png',
-                    "attached_to_doctype": doctype if doctype else "Geo Mitra Ledger Report",
-                    "attached_to_name": docname,
-                    "doctype": "File",
-                }
-            )
-            doc.flags.ignore_permissions = True
-            doc.insert()
-            frappe.db.commit()
-            return doc.file_url
-
-        except Exception as e:
-            frappe.log_error('ng_write_file', str(e))
-            return e
-
-
-@frappe.whitelist()
-def get_doctype_images(doctype, docname, is_private):
-    attachments = frappe.db.get_all("File",
-        fields=["attached_to_name", "file_name", "file_url", "is_private"],
-        filters={"attached_to_name": docname, "attached_to_doctype": doctype}
-    )
-    resp = []
-    for attachment in attachments:
-        # file_path = site_path + attachment["file_url"]
-        x = get_files_path(attachment['file_name'], is_private=is_private)
-        with open(x, "rb") as f:
-            # encoded_string = base64.b64encode(image_file.read())
-            img_content = f.read()
-            img_base64 = base64.b64encode(img_content).decode()
-            img_base64 = 'data:image/jpeg;base64,' + img_base64
-        resp.append({"image": img_base64})
-
-    return resp
-
+  
 @frappe.whitelist()
 def generate_keys(user):
     user_details = frappe.get_doc("User", user)
@@ -289,9 +229,6 @@ def verifyOTP(usr, pwd):
         "status": False,
         "message": "User Not Exists",
     }
-
-
-
 
 
 @frappe.whitelist()
